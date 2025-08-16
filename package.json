@@ -1,0 +1,14 @@
+{
+  "name": "windowreplacementhouston-com",
+  "version": "1.0.0",
+  "description": "Website for windowreplacementhouston.com",
+  "main": ".eleventy.js",
+  "scripts": {
+    "build": "npx @11ty/eleventy"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  }
+}
