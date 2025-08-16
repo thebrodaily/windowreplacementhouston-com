@@ -4,14 +4,14 @@ module.exports = function(eleventyConfig) {
   // to the final build. This is crucial for your CMS to work.
   eleventyConfig.addPassthroughCopy("admin");
 
-  // You can add other folders here if you create them later, like 'assets' for images.
-  // eleventyConfig.addPassthroughCopy("assets");
-
+  // This tells Eleventy that .html files should be treated as Nunjucks templates.
+  // This is the key change that will make all your pages build correctly.
   return {
     dir: {
       input: ".",
       includes: "_includes",
       output: "_site"
-    }
+    },
+    htmlTemplateEngine: "njk"
   };
 };
