@@ -37,11 +37,18 @@
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
-        .hero-bg {
-            background-image: url('https://placehold.co/1920x1080/e0e7ff/374151?text=Modern+Houston+Home');
+        .hero-bg, .guide-hero-bg, .about-hero-bg, .gallery-hero-bg, .hub-hero-bg, .local-hero-bg, .service-hero-bg {
             background-size: cover;
             background-position: center;
         }
+        .hero-bg { background-image: url('https://placehold.co/1920x1080/e0e7ff/374151?text=Modern+Houston+Home'); }
+        .guide-hero-bg { background-image: url('https://placehold.co/1920x1080/0f172a/ffffff?text=Window+Blueprints'); }
+        .about-hero-bg { background-image: url('https://placehold.co/1920x1080/1e293b/ffffff?text=Our+Team'); }
+        .gallery-hero-bg { background-image: url('https://placehold.co/1920x1080/0f172a/ffffff?text=Our+Finished+Projects'); }
+        .hub-hero-bg { background-image: url('https://placehold.co/1920x1080/0f172a/ffffff?text=Greater+Houston+Area'); }
+        .local-hero-bg { background-image: url('https://placehold.co/1920x1080/047857/ffffff?text=Beautiful+Local+Home'); }
+        .service-hero-bg { background-image: url('https://placehold.co/1920x1080/111827/ffffff?text=Window+Services'); }
+
         .area-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
@@ -51,6 +58,30 @@
         }
         .dropdown-menu {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .prose h2 {
+            font-size: 2.25rem;
+            line-height: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            color: #1e293b;
+            margin-bottom: 1em;
+            padding-top: 2rem;
+        }
+        .prose h3 {
+            font-size: 1.5rem;
+            line-height: 2rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-top: 2em;
+            margin-bottom: 1em;
+        }
+        .prose p, .prose ul li, .prose ol li {
+             color: #475569;
+             line-height: 1.75;
+        }
+        .prose strong {
+            color: #1e293b;
         }
     </style>
 
