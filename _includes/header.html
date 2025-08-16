@@ -1,0 +1,58 @@
+<header x-data="{ mobileMenuOpen: false }" class="sticky top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="/" class="text-2xl font-bold tracking-tight text-gray-900">
+            Window<span class="text-indigo-600">.</span>Houston
+        </a>
+        <!-- Desktop Menu -->
+        <nav class="hidden lg:flex space-x-8 items-center">
+            <a href="/services.html" class="text-gray-600 hover:text-indigo-600">Services</a>
+            <!-- Service Areas Dropdown -->
+            <div x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false" class="relative">
+                <a href="/service-areas.html" class="flex items-center text-gray-600 hover:text-indigo-600">
+                    Service Areas
+                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </a>
+                <div x-show="open" x-transition class="dropdown-menu absolute top-full left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 z-10 border border-gray-100">
+                    <a href="/service-areas/window-replacement-the-woodlands.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50">The Woodlands</a>
+                    <a href="/service-areas/window-replacement-sugar-land.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50">Sugar Land</a>
+                    <a href="/service-areas/window-replacement-katy.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50">Katy</a>
+                </div>
+            </div>
+            <!-- Resources Dropdown -->
+            <div x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false" class="relative">
+                <button class="flex items-center text-gray-600 hover:text-indigo-600">
+                    Resources
+                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div x-show="open" x-transition class="dropdown-menu absolute top-full left-0 mt-2 w-56 bg-white rounded-md shadow-lg py-2 z-10 border border-gray-100">
+                    <a href="/guides/houston-window-buying-guide.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50">Window Buying Guide</a>
+                    <a href="/resources/understanding-energy-efficiency.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50">Energy Efficiency Guide</a>
+                    <a href="/resources/window-materials-compared.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50">Materials Comparison</a>
+                    <a href="/guides/houston-window-installation-process.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50">Our Installation Process</a>
+                </div>
+            </div>
+            <a href="/why-us.html" class="text-gray-600 hover:text-indigo-600">Why Us</a>
+            <a href="/our-work.html" class="text-gray-600 hover:text-indigo-600">Our Work</a>
+            <a href="/quote.html" class="text-white bg-gray-900 hover:bg-indigo-600 px-5 py-2 rounded-md font-semibold cta-button">
+                Get Free Quote
+            </a>
+        </nav>
+        <!-- Mobile Menu Button -->
+        <div class="lg:hidden">
+            <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-gray-600 hover:text-gray-800">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div x-show="mobileMenuOpen" @click.away="mobileMenuOpen = false" class="lg:hidden" x-transition>
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="/services.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Services</a>
+            <a href="/service-areas.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Service Areas</a>
+            <a href="/guides/houston-window-buying-guide.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Resources</a>
+            <a href="/why-us.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Why Us</a>
+            <a href="/our-work.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Our Work</a>
+            <a href="/quote.html" class="block w-full text-left mt-2 px-3 py-2 rounded-md text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">Get Free Quote</a>
+        </div>
+    </div>
+</header>

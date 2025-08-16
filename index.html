@@ -1,0 +1,111 @@
+---
+layout: base.njk
+title: Houston's Transparent Window Company | Price Your Project Online
+description: See your estimated window replacement cost in 60 seconds with our free pricing calculator. We believe in transparency, not sales pressure. Houston, TX.
+---
+
+{% include "header.html" %}
+
+<main>
+    <!-- Hero Section -->
+    <section class="relative bg-slate-900 text-white flex items-center justify-center" style="height: 90vh; min-height: 700px;">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-black mb-4">
+                Tired of the Guessing Game?
+            </h1>
+            <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8 text-indigo-200">
+                The window industry is built on hiding the price until a salesperson is in your home. We're changing that. Use our free tool to see your estimated project cost right now, without the pressure.
+            </p>
+            <a href="#price-calculator" class="text-white bg-indigo-600 hover:bg-indigo-500 px-10 py-4 rounded-md font-bold text-lg cta-button">
+                Price Your Project Now
+            </a>
+        </div>
+    </section>
+
+    <!-- Interactive Pricing Calculator -->
+    <section id="price-calculator" class="py-20 lg:py-24 bg-gray-50" x-data="priceCalculator()">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto">
+                <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight">Your Project, Your Price.</h2>
+                <p class="mt-4 text-lg text-slate-600">Follow these two simple steps to get a real-time, transparent estimate for your window replacement project. This is the honest starting point you won't get anywhere else.</p>
+            </div>
+
+            <div class="mt-16 max-w-4xl mx-auto grid lg:grid-cols-2 gap-8 lg:gap-12 bg-white p-8 md:p-12 rounded-lg shadow-2xl border border-gray-200">
+                <!-- Step-by-Step Inputs -->
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-2xl font-bold text-slate-800">Step 1: Choose Your Material</h3>
+                        <div class="mt-4 grid grid-cols-2 gap-4">
+                            <button @click="setMaterial('vinyl')" :class="{'bg-indigo-600 text-white border-indigo-600': material === 'vinyl', 'bg-white hover:bg-gray-100': material !== 'vinyl'}" class="p-4 rounded-lg border text-left transition">
+                                <span class="font-bold block">Vinyl</span>
+                                <span class="text-sm">Best Value & Efficiency</span>
+                            </button>
+                            <button @click="setMaterial('aluminum')" :class="{'bg-indigo-600 text-white border-indigo-600': material === 'aluminum', 'bg-white hover:bg-gray-100': material !== 'aluminum'}" class="p-4 rounded-lg border text-left transition">
+                                <span class="font-bold block">Aluminum</span>
+                                <span class="text-sm">Modern & Strong</span>
+                            </button>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-2">We also offer fiberglass for special projects. <a href="/contact.html" class="underline">Contact us</a> for details.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-slate-800">Step 2: How Many Windows?</h3>
+                        <input type="number" x-model.number="windowCount" @input="calculatePrice" min="1" class="mt-4 w-full p-4 border border-gray-300 rounded-lg text-2xl font-bold text-center focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" placeholder="e.g., 10">
+                    </div>
+                </div>
+
+                <!-- Real-Time Estimate Display -->
+                <div class="bg-slate-800 text-white p-8 rounded-lg flex flex-col justify-center text-center">
+                    <p class="font-semibold text-indigo-300 uppercase tracking-wider">Your Estimated Project Cost</p>
+                    <div class="my-4">
+                        <span class="text-4xl md:text-6xl font-black" x-text="formatCurrency(lowEstimate)">$0</span>
+                        <span class="text-2xl md:text-4xl font-bold text-slate-400 mx-2">-</span>
+                        <span class="text-4xl md:text-6xl font-black" x-text="formatCurrency(highEstimate)">$0</span>
+                    </div>
+                    <p class="text-sm text-slate-400">This estimate includes our process-perfect, full-frame installation. Price may vary based on options like tempered glass, shapes, etc.</p>
+                    <a href="/quote.html" class="mt-6 w-full text-center text-white bg-indigo-600 hover:bg-indigo-500 px-8 py-3 rounded-md font-bold text-lg cta-button">
+                        Schedule Your 360° Diagnostic
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Other sections would follow, rewritten to support the transparency angle -->
+
+</main>
+
+<script>
+    function priceCalculator() {
+        return {
+            material: 'vinyl',
+            windowCount: 10, // Default value
+            lowEstimate: 0,
+            highEstimate: 0,
+            prices: {
+                vinyl: { low: 950, high: 1500 },
+                aluminum: { low: 1300, high: 1800 }
+            },
+            init() {
+                this.calculatePrice();
+            },
+            setMaterial(mat) {
+                this.material = mat;
+                this.calculatePrice();
+            },
+            calculatePrice() {
+                if (this.windowCount > 0) {
+                    this.lowEstimate = this.windowCount * this.prices[this.material].low;
+                    this.highEstimate = this.windowCount * this.prices[this.material].high;
+                } else {
+                    this.lowEstimate = 0;
+                    this.highEstimate = 0;
+                }
+            },
+            formatCurrency(value) {
+                return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(value);
+            }
+        }
+    }
+</script>
+
+{% include "footer.html" %}

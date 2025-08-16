@@ -1,0 +1,24 @@
+# This is the backend configuration for your Git-based CMS.
+# It tells the CMS how to connect to your GitHub repository.
+backend:
+  name: git-gateway
+  branch: main # Or master, depending on your repository's default branch
+
+# This defines where your images will be stored when you upload them.
+media_folder: "assets/images/blog" # A new folder for blog images
+public_folder: "/assets/images/blog"
+
+# This defines the "Posts" collection for your blog.
+collections:
+  - name: "posts" # Used in routes, e.g., /admin/collections/posts
+    label: "Posts" # Used in the UI
+    folder: "_posts" # The folder where blog posts will be stored in your repo
+    create: true # Allow users to create new documents in this collection
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template
+    fields: # The fields for each document, usually in front matter
+      - {label: "Layout", name: "layout", widget: "hidden", default: "post"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Featured Image", name: "thumbnail", widget: "image"}
+      - {label: "Category", name: "category", widget: "string"}
+      - {label: "Body", name: "body", widget: "markdown"}
